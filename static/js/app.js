@@ -1,0 +1,1 @@
+document.querySelectorAll("input[name='plate']").forEach(el=>el.addEventListener("input",()=>el.value=el.value.toUpperCase().replace(/\s/g,"")));

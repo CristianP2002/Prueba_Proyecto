@@ -1,0 +1,8 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}PARKIA{% endblock %}</title><link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}"></head>
+<body><aside class="sidebar"><a class="brand" href="/">PARK<span>IA</span><small>SMART PARKING</small></a>
+<nav><a href="/">▦ <span>Panel principal</span></a><a href="/vehicles">◉ <span>Vehículos</span></a><a href="/entry">↘ <span>Registrar ingreso</span></a><a href="/exit">↗ <span>Registrar salida</span></a><a href="/coupons">％ <span>Cupones</span></a><a href="/history">▤ <span>Historial de pagos</span></a><a href="/assistant">✧ <span>Asistente IA</span></a></nav>
+<div class="side-foot">SISTEMA ACADÉMICO<br><span>Versión 1.0 · Demo</span></div></aside>
+<main class="main"><header class="topbar"><div><span class="eyebrow">GESTIÓN INTELIGENTE</span><h2>{% block heading %}Centro de control{% endblock %}</h2></div><div class="admin"><span class="pulse"></span> Sistema operativo <b>AD</b></div></header>
+{% with messages=get_flashed_messages(with_categories=true) %}{% if messages %}{% for category,message in messages %}<div class="alert {{category}}">{{message}}</div>{% endfor %}{% endif %}{% endwith %}
+{% block content %}{% endblock %}<footer>PARKIA · Proyecto académico · Pagos simulados</footer></main><script src="{{url_for('static',filename='js/app.js')}}"></script></body></html>

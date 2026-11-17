@@ -1,0 +1,11 @@
+{% extends "base.html" %}{% block title %}Panel | PARKIA{% endblock %}{% block heading %}Panel de control{% endblock %}
+{% block content %}
+<section class="welcome"><div><span class="eyebrow">RESUMEN OPERATIVO</span><h1>Todo bajo control.</h1><p>Monitorea la actividad de tu parqueadero en tiempo real.</p></div><a class="btn primary" href="/entry">＋ Nuevo ingreso</a></section>
+<div class="stats">
+<div class="stat"><span>ESPACIOS OCUPADOS</span><strong>{{stats.occupied}}<small>/ {{stats.total}}</small></strong><em>{{stats.available}} disponibles</em></div>
+<div class="stat"><span>INGRESOS DE HOY</span><strong>{{currency(stats.income)}}</strong><em>Recaudo registrado</em></div>
+<div class="stat"><span>PAGOS DE HOY</span><strong>{{stats.payments}}</strong><em>Transacciones simuladas</em></div>
+<div class="stat"><span>VEHÍCULOS</span><strong>{{stats.vehicles}}</strong><em>En la base de datos</em></div></div>
+<div class="grid-main"><section class="panel"><div class="panel-head"><div><h3>Estado de espacios</h3><p>Distribución por disponibilidad</p></div><span class="tag">EN VIVO</span></div><div class="space-grid">{% for s in spaces %}<div class="space {{'busy' if s.occupied else 'free'}}"><b>{{s.code}}</b><small>{{'Ocupado' if s.occupied else 'Libre'}}</small></div>{% endfor %}</div><div class="legend"><span>● Disponible</span><span>● Ocupado</span></div></section>
+<section class="panel"><div class="panel-head"><div><h3>Actividad reciente</h3><p>Últimos movimientos</p></div></div>{% for r in recent %}<div class="activity"><div class="activity-icon">↔</div><div><b>{{r.plate}}</b><small>{{r.code}} · {{r.entry_time[:16].replace('T',' ')}}</small></div><span class="status {{'active' if r.status=='ACTIVE' else 'closed'}}">{{'Dentro' if r.status=='ACTIVE' else 'Finalizado'}}</span></div>{% else %}<p class="empty">Todavía no hay movimientos registrados.</p>{% endfor %}</section></div>
+{% endblock %}

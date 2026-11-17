@@ -1,0 +1,5 @@
+Flask>=3.0,<4.0
+requests>=2.31
+langchain-core>=0.3
+langchain-ollama>=0.2
+openpyxl>=3.1
